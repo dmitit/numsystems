@@ -16,7 +16,11 @@ const InputField = ({ label, value, base, onChange }) => {
 InputField.propTypes = {
    label: PropTypes.string,
    value: PropTypes.string,
-   base: PropTypes.number,
+   base: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      symbols: PropTypes.array.isRequired,
+      regexp: PropTypes.instanceOf(RegExp).isRequired,
+   }),
    onChange: PropTypes.func,
 };
 

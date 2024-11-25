@@ -5,15 +5,19 @@ import { convertNumber } from "../utils/conversions";
 
 const Converter = ({ systems }) => {
    const [values, setValues] = useState(
-      systems.reduce((acc, base) => ({ ...acc, [base]: "" }), {})
+      systems.reduce((acc, system) => ({ ...acc, [system.title]: "" }), {})
    );
 
-   const handleInputChange = (value, fromBase) => {
-      const newValues = systems.reduce((acc, base) => {
-         if (value === "") {
-            acc[base] = "";
+   const handleInputChange = (value, fromSystem) => {
+      const newValues = systems.reduce((acc, system) => {
+         if (value === "" || !fromSystem.regexp.test(value)) {
+            acc[system.title] = ""; 
          } else {
-            acc[base] = convertNumber(value, fromBase, base);
+            acc[system.title] = convertNumber(
+               value,
+               fromSystem.symbols,
+               system.symbols
+            );
          }
          return acc;
       }, {});
@@ -23,13 +27,13 @@ const Converter = ({ systems }) => {
 
    return (
       <div>
-         {systems.map((base) => (
+         {systems.map((system) => (
             <InputField
-               key={base}
-               label={`System ${base}`}
-               value={values[base]}
-               base={base}
-               onChange={handleInputChange}
+               key={system.title}
+               label={`System ${system.title}`}
+               value={values[system.title]}
+               base={system}
+               onChange={(value) => handleInputChange(value, system)}
             ></InputField>
          ))}
       </div>
@@ -37,7 +41,14 @@ const Converter = ({ systems }) => {
 };
 
 Converter.propTypes = {
-   systems: PropTypes.array.isRequired,
+   systems: PropTypes.arrayOf(
+      PropTypes.shape({
+         title: PropTypes.string.isRequired,
+         symbols: PropTypes.array.isRequired,
+         regexp: PropTypes.instanceOf(RegExp).isRequired,
+      })
+   ).isRequired,
 };
 
 export default Converter;
+

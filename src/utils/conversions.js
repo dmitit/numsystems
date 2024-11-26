@@ -7,26 +7,24 @@
  */
 export const convertNumber = (value, fromAlphabet, toAlphabet) => {
   try {
-    if (new Set(fromAlphabet).size !== fromAlphabet.length || 
-        new Set(toAlphabet).size !== toAlphabet.length) {
-      throw new Error("Alphabets contain duplicate characters.");
-    }
+    const correctedFromAlphabet = [...new Set(fromAlphabet)]
+    const correctedToAlphabet = [...new Set(toAlphabet)]
 
     let decimal = [...value].reduce((acc, char) => {
-      const index = fromAlphabet.indexOf(char);
-      if (index === -1) throw new Error("Character not found in the source alphabet.");
-      return acc * fromAlphabet.length + index;
+      const index = correctedFromAlphabet.indexOf(char);
+      return acc * correctedFromAlphabet.length + index;
     }, 0);
 
     let result = "";
-    const base = toAlphabet.length;
+    const base = correctedToAlphabet.length;
     do {
-      result = toAlphabet[decimal % base] + result;
+      result = correctedToAlphabet[decimal % base] + result;
       decimal = Math.floor(decimal / base);
     } while (decimal > 0);
 
     return result;
-  } catch {
+  } catch(err) {
+    console.log(err);
     return "";
   }
 };

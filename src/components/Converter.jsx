@@ -10,15 +10,20 @@ const Converter = ({ systems }) => {
 
    const handleInputChange = (value, fromSystem) => {
       const newValues = systems.reduce((acc, system) => {
-         if (value === "" || !fromSystem.regexp.test(value)) {
-            acc[system.title] = ""; 
+         if (!value.length) {
+            acc[system.title] = ""
          } else {
-            acc[system.title] = convertNumber(
-               value,
-               fromSystem.symbols,
-               system.symbols
-            );
+            if (!fromSystem.regexp.test(value)) {
+               acc[system.title] = values[system.title]; 
+            } else {
+               acc[system.title] = convertNumber(
+                  value,
+                  fromSystem.symbols,
+                  system.symbols
+               );
+            }
          }
+         
          return acc;
       }, {});
 

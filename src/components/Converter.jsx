@@ -11,10 +11,10 @@ const Converter = ({ systems }) => {
    const handleInputChange = (value, fromSystem) => {
       const newValues = systems.reduce((acc, system) => {
          if (!value.length) {
-            acc[system.title] = ""
+            acc[system.title] = "";
          } else {
             if (!fromSystem.regexp.test(value)) {
-               acc[system.title] = values[system.title]; 
+               acc[system.title] = values[system.title];
             } else {
                acc[system.title] = convertNumber(
                   value,
@@ -23,7 +23,7 @@ const Converter = ({ systems }) => {
                );
             }
          }
-         
+
          return acc;
       }, {});
 
@@ -56,4 +56,3 @@ Converter.propTypes = {
 };
 
 export default Converter;
-

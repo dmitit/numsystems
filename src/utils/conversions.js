@@ -7,13 +7,7 @@
  */
 export const convertNumber = (value, fromAlphabet, toAlphabet) => {
    try {
-      if (
-         !value ||
-         !fromAlphabet ||
-         !toAlphabet ||
-         fromAlphabet.length < 2 ||
-         toAlphabet.length < 2
-      ) {
+      if (!value || !fromAlphabet || !toAlphabet) {
          return "";
       }
 

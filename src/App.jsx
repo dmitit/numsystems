@@ -1,7 +1,9 @@
+import AddSystemForm from "./components/AddSystemForm";
 import Converter from "./components/Converter";
+import { useState } from "react";
 
 const App = () => {
-   const systems = [
+   const [systems, setSystems] = useState([
       {
          title: "Binary",
          symbols: ["0", "1"],
@@ -39,12 +41,17 @@ const App = () => {
          ],
          regexp: /^[0-9A-F]+$/i,
       },
-   ];
+   ]);
+
+   const addSystem = (newSystem) => {
+      setSystems((prevSystems) => [...prevSystems, newSystem]);
+   };
 
    return (
       <div style={{ padding: "2rem" }}>
          <h1>Number System Converter</h1>
          <Converter systems={systems} />
+         <AddSystemForm onSubmit={addSystem} />
       </div>
    );
 };

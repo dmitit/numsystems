@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import InputField from "./InputField";
 import { convertNumber } from "../utils/conversions";
 
-const Converter = ({ systems }) => {
+const Converter = ({ systems, onSystemRemove }) => {
    const [values, setValues] = useState(
       systems.reduce((acc, system) => ({ ...acc, [system.title]: "" }), {})
    );
@@ -33,13 +33,20 @@ const Converter = ({ systems }) => {
    return (
       <div>
          {systems.map((system) => (
-            <InputField
-               key={system.title}
-               label={`System ${system.title}`}
-               value={values[system.title]}
-               base={system}
-               onChange={(value) => handleInputChange(value, system)}
-            ></InputField>
+            <div key={system.title}>
+               <InputField
+                  label={`System ${system.title}`}
+                  value={values[system.title]}
+                  base={system}
+                  onChange={(value) => handleInputChange(value, system)}
+               ></InputField>
+               <button
+                  className="bg-red-300"
+                  onClick={() => onSystemRemove(system)}
+               >
+                  Delete
+               </button>
+            </div>
          ))}
       </div>
    );
@@ -53,6 +60,7 @@ Converter.propTypes = {
          regexp: PropTypes.instanceOf(RegExp).isRequired,
       })
    ).isRequired,
+   onSystemRemove: PropTypes.func,
 };
 
 export default Converter;

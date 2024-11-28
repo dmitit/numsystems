@@ -49,6 +49,18 @@ const App = () => {
       setSystems((prevSystems) => [...prevSystems, newSystem]);
    };
 
+   const removeSystem = (systemToRemove) => {
+      setSystems((prevSystems) => {
+         if (prevSystems.length <= 2) {
+            console.log("there must");
+            return prevSystems;
+         }
+         return prevSystems.filter(
+            (system) => system.title !== systemToRemove.title
+         );
+      });
+   };
+
    return (
       <div>
          <CoreHeader />
@@ -91,7 +103,7 @@ const App = () => {
                   </div>
                </div>
                <div className="flex-[2]">
-                  <Converter systems={systems} />
+                  <Converter systems={systems} onSystemRemove={removeSystem} />
                </div>
             </div>
          </CoreContainer>

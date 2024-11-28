@@ -25,31 +25,40 @@ const AddSystemForm = ({ onSubmit }) => {
 
    return (
       <div>
-         <h2>Manage System</h2>
-         <form onSubmit={handleFormSubmit}>
+         <form
+            onSubmit={handleFormSubmit}
+            className="flex flex-col gap-y-[0.2rem]"
+         >
             <div>
-               <label>
-                  Title:
+               <label className="flex flex-col-reverse max-w-[50%]">
                   <input
                      type="text"
                      value={title}
                      onChange={(e) => setTitle(e.target.value)}
                      required
+                     className="peer pl-[2px] py-[2px] focus:outline focus:outline-1 focus:outline-[#47ffe3]"
                   />
+                  <span className="peer-focus:font-normal">Title</span>
                </label>
             </div>
             <div>
-               <label>
-                  Symbols:
+               <label className="flex flex-col-reverse max-w-[50%]">
                   <input
                      type="text"
                      value={symbols}
                      onChange={(e) => setSymbols(e.target.value)}
                      required
+                     className="peer pl-[2px] py-[2px] focus:outline focus:outline-1 focus:outline-[#47ffe3]"
                   />
+                  <span className="peer-focus:font-normal">Symbols</span>
                </label>
             </div>
-            <button type="submit">Generate</button>
+            <button
+               className="border-[1px] border-[#000000] border-solid py-[0.2rem] px-[2rem] focus:outline focus:outline-1 focus:outline-[#47ffe3] self-baseline mt-[1.6rem]"
+               type="submit"
+            >
+               Add
+            </button>
          </form>
       </div>
    );

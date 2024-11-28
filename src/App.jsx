@@ -1,6 +1,8 @@
 import AddSystemForm from "./components/AddSystemForm";
 import Converter from "./components/Converter";
 import { useState } from "react";
+import CoreHeader from "./components/CoreHeader";
+import CoreContainer from "./components/CoreContainer";
 
 const App = () => {
    const [systems, setSystems] = useState([
@@ -48,10 +50,56 @@ const App = () => {
    };
 
    return (
-      <div style={{ padding: "2rem" }}>
-         <h1>Number System Converter</h1>
-         <Converter systems={systems} />
-         <AddSystemForm onSubmit={addSystem} />
+      <div>
+         <CoreHeader />
+         <CoreContainer>
+            <div className="flex justify-between mt-[4rem] gap-x-[5rem]">
+               <div className="flex-[3]">
+                  <h1 className="text-[2.2rem] font-normal">
+                     Number System Converter
+                  </h1>
+                  <p>
+                     <p>
+                        Explore the ultimate tool for converting numbers between
+                        various numeral systems! Whether you&apos;re working
+                        with binary, decimal, hexadecimal, or any custom base,
+                        this intuitive converter has you covered.
+                     </p>
+                     <div className="mt-[2rem]">
+                        <h2 className="text-[2rem] font-normal">
+                           Key Features:
+                        </h2>
+                        <ul className="pl-[2.6rem] mt-[1rem] list-decimal">
+                           <li>
+                              <b>Real-Time Conversion:</b> Instantly see how a
+                              number in one system translates to others.
+                           </li>
+                           <li>
+                              <b>Customizable Systems:</b> Add your own numeral
+                              systems to expand the converter&apos;s
+                              functionality.
+                           </li>
+                           <li>
+                              <b>Dynamic Inputs:</b> Seamlessly switch between
+                              systems and edit values for precise conversions.
+                           </li>
+                        </ul>
+                     </div>
+                  </p>
+                  <div className="mt-[2rem]">
+                     <h2 className="text-[2rem] font-normal">
+                        Add Custom System
+                     </h2>
+                     <div className="mt-[1rem]">
+                        <AddSystemForm onSubmit={addSystem} />
+                     </div>
+                  </div>
+               </div>
+               <div className="flex-[2]">
+                  <Converter systems={systems} />
+               </div>
+            </div>
+         </CoreContainer>
       </div>
    );
 };

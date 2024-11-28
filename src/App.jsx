@@ -58,39 +58,34 @@ const App = () => {
                   <h1 className="text-[2.2rem] font-normal">
                      Number System Converter
                   </h1>
-                  <p>
-                     <p>
-                        Explore the ultimate tool for converting numbers between
-                        various numeral systems! Whether you&apos;re working
-                        with binary, decimal, hexadecimal, or any custom base,
-                        this intuitive converter has you covered.
-                     </p>
-                     <div className="mt-[2rem]">
-                        <h2 className="text-[2rem] font-normal">
-                           Key Features:
-                        </h2>
-                        <ul className="pl-[2.6rem] mt-[1rem] list-decimal">
-                           <li>
-                              <b>Real-Time Conversion:</b> Instantly see how a
-                              number in one system translates to others.
-                           </li>
-                           <li>
-                              <b>Customizable Systems:</b> Add your own numeral
-                              systems to expand the converter&apos;s
-                              functionality.
-                           </li>
-                           <li>
-                              <b>Dynamic Inputs:</b> Seamlessly switch between
-                              systems and edit values for precise conversions.
-                           </li>
-                        </ul>
-                     </div>
+                  <p className="mt-[0.6rem]">
+                     Explore the ultimate tool for converting numbers between
+                     various numeral systems! Whether you&apos;re working with
+                     binary, decimal, hexadecimal, or any custom base, this
+                     intuitive converter has you covered.
                   </p>
+                  <div className="mt-[2rem]">
+                     <h2 className="text-[2rem] font-normal">Key Features:</h2>
+                     <ul className="pl-[2.6rem] mt-[0.6rem] list-decimal">
+                        <li>
+                           <b>Real-Time Conversion:</b> Instantly see how a
+                           number in one system translates to others.
+                        </li>
+                        <li>
+                           <b>Customizable Systems:</b> Add your own numeral
+                           systems to expand the converter&apos;s functionality.
+                        </li>
+                        <li>
+                           <b>Dynamic Inputs:</b> Seamlessly switch between
+                           systems and edit values for precise conversions.
+                        </li>
+                     </ul>
+                  </div>
                   <div className="mt-[2rem]">
                      <h2 className="text-[2rem] font-normal">
                         Add Custom System
                      </h2>
-                     <div className="mt-[1rem]">
+                     <div className="mt-[0.6rem]">
                         <AddSystemForm onSubmit={addSystem} />
                      </div>
                   </div>

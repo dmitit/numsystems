@@ -31,7 +31,7 @@ const Converter = ({ systems, onSystemRemove }) => {
    };
 
    return (
-      <div>
+      <div className="flex flex-col gap-y-[0.6rem]">
          {systems.map((system) => (
             <div key={system.title}>
                <InputField
@@ -39,13 +39,8 @@ const Converter = ({ systems, onSystemRemove }) => {
                   value={values[system.title]}
                   base={system}
                   onChange={(value) => handleInputChange(value, system)}
+                  onSystemRemove={(system) => onSystemRemove(system)}
                ></InputField>
-               <button
-                  className="bg-red-300"
-                  onClick={() => onSystemRemove(system)}
-               >
-                  Delete
-               </button>
             </div>
          ))}
       </div>

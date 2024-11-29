@@ -97,7 +97,7 @@ const App = () => {
                      <h2 className="text-[2rem] font-normal">
                         Add Custom System
                      </h2>
-                     <div className="mt-[0.6rem]">
+                     <div className="mt-[0.6rem] max-w-[50%]">
                         <AddSystemForm onSubmit={addSystem} />
                      </div>
                   </div>

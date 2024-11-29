@@ -8,7 +8,7 @@ const AddSystemForm = ({ onSubmit }) => {
    const handleFormSubmit = (e) => {
       e.preventDefault();
 
-      const uniqueSymbols = [...new Set(symbols.split(""))];
+      const uniqueSymbols = [...new Set(Array.from(symbols))];
       const regexp = new RegExp(`[${uniqueSymbols.join("")}]`);
 
       const newSystem = {
@@ -16,6 +16,7 @@ const AddSystemForm = ({ onSubmit }) => {
          symbols: uniqueSymbols,
          regexp,
       };
+      console.log(newSystem);
 
       onSubmit(newSystem);
 
@@ -30,7 +31,7 @@ const AddSystemForm = ({ onSubmit }) => {
             className="flex flex-col gap-y-[0.2rem]"
          >
             <div>
-               <label className="flex flex-col-reverse max-w-[50%]">
+               <label className="flex flex-col-reverse">
                   <input
                      type="text"
                      value={title}
@@ -42,7 +43,7 @@ const AddSystemForm = ({ onSubmit }) => {
                </label>
             </div>
             <div>
-               <label className="flex flex-col-reverse max-w-[50%]">
+               <label className="flex flex-col-reverse">
                   <input
                      type="text"
                      value={symbols}
@@ -54,7 +55,7 @@ const AddSystemForm = ({ onSubmit }) => {
                </label>
             </div>
             <button
-               className="border-[1px] border-[#000000] border-solid py-[0.2rem] px-[2rem] focus:outline focus:outline-1 focus:outline-[#47ffe3] self-baseline mt-[1.6rem]"
+               className="bg-black text-white py-[2px] px-[1.2rem] focus:font-normal focus:outline focus:outline-1 focus:outline-[#47ffe3] mt-[1.6rem]"
                type="submit"
             >
                Add
